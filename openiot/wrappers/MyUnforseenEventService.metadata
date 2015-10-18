@@ -1,0 +1,13 @@
+sensorName=MyUnforseenEventService
+source="http://localhost:22001/stream"
+sourceType="http://openiot.eu/ontology/ns/UnforseenEventService"
+sensorType="http://openiot.eu/ontology/ns/UnforseenEventService"
+information=Unforeseen event service
+author=Andrei
+feature="http://lsm.deri.ie/OpenIoT/UnforseenFeature"
+fields="event"
+field.event.propertyName="http://openiot.eu/ontology/ns/UnforseenEvent"
+field.event.unit="Unit"
+latitude="53.345"
+longitude="-6.253"
+sensorID="http://lsm.deri.ie/resource/777740844068447"

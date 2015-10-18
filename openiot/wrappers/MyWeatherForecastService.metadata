@@ -1,0 +1,15 @@
+sensorName=MyWeatherForecastService
+source="http://localhost:22001/stream"
+sourceType="http://openiot.eu/ontology/ns/WeatherForecastService"
+sensorType="http://openiot.eu/ontology/ns/WeatherForecastService"
+information=Weather Forecast from PI
+author=andrei
+feature="http://lsm.deri.ie/OpenIoT/WeatherFeature"
+fields="rain,temperature"
+field.temperature.propertyName="http://openiot.eu/ontology/ns/AirTemperature"
+field.temperature.unit="Unit"
+field.rain.propertyName="http://openiot.eu/ontology/ns/Rain"
+field.rain.unit="Unit"
+latitude=53.345
+longitude=-6.253
+sensorID="http://lsm.deri.ie/resource/777728710147543"

@@ -1,0 +1,17 @@
+sensorName=MyBusService
+source="http://localhost:22001/stream"
+sourceType="http://openiot.eu/ontology/ns/BusService"
+sensorType="http://openiot.eu/ontology/ns/BusService"
+information=Info about my bus service
+author=Andrei
+feature="http://lsm.deri.ie/OpenIoT/BusFeature"
+fields="routeid,available,stopid"
+field.routeid.propertyName="http://openiot.eu/ontology/ns/RouteID"
+field.routeid.unit="Unit"
+field.available.propertyName="http://openiot.eu/ontology/ns/Availability"
+field.available.unit="Unit"
+field.stopid.propertyName="http://service.openiot.eu/StopID"
+field.stopid.unit="Unit"
+latitude=53.345
+longitude=-6.253
+sensorID="http://lsm.deri.ie/resource/777700922067125"

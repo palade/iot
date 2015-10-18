@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<virtual-sensor name="MyRouteGenerationService" priority="10" >
+    <processing-class>
+        <class-name>org.openiot.gsn.vsensor.LSMExporter</class-name>
+        <init-params>
+            <param name="allow-nulls">false</param>
+            <param name="publish-to-lsm">true</param>
+        </init-params>
+        <output-structure>
+            <field name="routeid" type="integer" />
+        </output-structure>
+    </processing-class>
+    <description>route generation station</description>
+    <life-cycle pool-size="10"/>
+    <addressing>
+    </addressing>
+    <streams>
+        <stream name="input1">
+            <source alias="source1" sampling-rate="1" storage-size="1">
+                <address wrapper="csv">
+                    <predicate key="file">C:\env\openiot\modules\x-gsn\data\station_route.csv</predicate>
+                    <predicate key="fields">timed, routeid</predicate>
+                    <predicate key="formats">timestamp(d/M/y H:m), numeric</predicate>
+                    <predicate key="bad-values">NaN,6999,-6999,null</predicate>
+                    <predicate key="timezone">Etc/GMT-2</predicate>
+                    <predicate key="sampling">1</predicate>
+		            <predicate key="check-point-directory">csv-check-points</predicate>
+                </address>
+                <query>select * from wrapper
+                </query>
+            </source>
+            <query>select * from source1</query>
+        </stream>
+    </streams>
+</virtual-sensor>

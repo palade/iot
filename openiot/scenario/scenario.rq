@@ -1,0 +1,34 @@
+PREFIX meta:        <http://lsm.deri.ie/OpenIoT/sensormeta#>
+PREFIX data:        <http://lsm.deri.ie/OpenIoT/sensordata#>
+PREFIX ssn:         <http://purl.oclc.org/NET/ssnx/ssn#>
+PREFIX ontology:    <http://openiot.eu/ontology/ns/> 
+PREFIX rdf:         <http://www.w3.org/2000/01/rdf-schema#>
+
+
+SELECT ?travelMethod WHERE {
+    SELECT DISTINCT (
+        IF ((SELECT ?value WHERE {
+           GRAPH data: { ?obsValueID ontology:value ?value }
+           GRAPH data: { ?obsValueID rdf:label 'Rain' }
+           GRAPH data: { ?obsValueID ontology:isObservedValueOf ?obsID}
+           GRAPH data: { ?obsID ssn:observationResultTime ?time }
+           GRAPH data: { ?obsID ssn:observedBy ?id }
+           GRAPH meta: { ?id rdf:label 'MyWeatherForecastService' } 
+        } ORDER BY DESC (?time) LIMIT 1) > 0, (
+            IF ((SELECT ?value WHERE {
+                GRAPH data: { ?obsValueID ontology:value ?value }
+                GRAPH data: { ?obsValueID rdf:label 'Availability'}
+                GRAPH data: { ?obsValueID ontology:isObservedValueOf ?obsID}
+                GRAPH data: { ?obsID ssn:observationResultTime ?time }
+                GRAPH data: { ?obsID ssn:observedBy ?id }
+                GRAPH meta: { ?id rdf:label 'MyBusService' } 
+                } ORDER BY DESC (?time) LIMIT 1) > 0,'Take Bus', (
+                        IF ((SELECT ?value WHERE {
+                            GRAPH data: { ?obsValueID ontology:value ?value }
+                            GRAPH data: { ?obsValueID rdf:label 'Availability' }
+                            GRAPH data: { ?obsValueID ontology:isObservedValueOf ?obsID}
+                            GRAPH data: { ?obsID ssn:observationResultTime ?time }
+                            GRAPH data: { ?obsID ssn:observedBy ?id }
+                            GRAPH meta: { ?id rdf:label 'MyBikeService' } 
+                            } ORDER BY DESC (?time) LIMIT 1) > 0, 'Take Bike', 'Take Taxi')))) , 'Take Bike') 
+as ?travelMethod)  WHERE { ?1 ?2 ?3 }}

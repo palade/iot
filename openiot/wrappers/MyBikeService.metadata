@@ -1,0 +1,15 @@
+sensorName=MyBikeService
+source="http://localhost:22001/stream"
+sourceType="http://openiot.eu/ontology/ns/BikeService"
+sensorType="http://openiot.eu/ontology/ns/BikeService"
+information=Info about my bike service
+author=andrei
+feature="http://lsm.deri.ie/OpenIoT/BikeFeature"
+fields="stationid,available"
+field.available.propertyName="http://services.openiot.eu/Availability"
+field.available.unit="Unit"
+field.stationid.propertyName="http://service.openiot.eu/StationID"
+field.stationid.unit="Unit"
+latitude=53.345
+longitude=-6.253
+sensorID="http://lsm.deri.ie/resource/777720522038570"

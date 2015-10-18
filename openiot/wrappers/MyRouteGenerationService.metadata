@@ -1,0 +1,13 @@
+sensorName=MyRouteGenerationService
+source="http://localhost:22001/stream"
+sourceType="http://openiot.eu/ontology/ns/RouteGenerationService"
+sensorType="http://openiot.eu/ontology/ns/RouteGenerationService"
+information=Route generation service
+author=Andrei
+feature="http://lsm.deri.ie/OpenIoT/RouteFeature"
+fields="routeid"
+field.routeid.propertyName="http://openiot.eu/ontology/ns/RouteID"
+field.routeid.unit="Unit"
+latitude="53.345"
+longitude="-6.253"
+sensorID="http://lsm.deri.ie/resource/777734118317425"

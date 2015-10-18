@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<virtual-sensor name="MyBusService" priority="10" >
+    <processing-class>
+        <class-name>org.openiot.gsn.vsensor.LSMExporter</class-name>
+        <init-params>
+            <param name="allow-nulls">false</param>
+            <param name="publish-to-lsm">true</param>
+        </init-params>
+        <output-structure>
+            <field name="stopid" type="Integer" />
+            <field name="routeid" type="Integer" />
+            <field name="available" type="Integer" />
+        </output-structure>
+    </processing-class>
+    <description>bus station</description>
+    <life-cycle pool-size="10"/>
+    <addressing>
+        <predicate key="geographical">bus station 400</predicate>
+        <predicate key="LATITUDE">53.3447693</predicate>
+        <predicate key="LONGITUDE">-6.2514271</predicate>
+    </addressing>
+    <storage history-size="1" />
+    <streams>
+        <stream name="input1">
+            <source alias="source1" sampling-rate="1" storage-size="1">
+                <address wrapper="bus-service-get">
+                    <predicate key="url">http://192.168.1.100:8080/BusService/webresources/busservice/400/4/csv</predicate>
+		<predicate key="rate">1000</predicate>
+                </address>
+                <query>select * from wrapper</query>
+            </source>
+            <query>select * from source1</query>
+        </stream>
+    </streams>
+</virtual-sensor>
